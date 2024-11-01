@@ -1,6 +1,6 @@
 #!/bin/bash
-result_file="report/baseline_model_results.csv"
-report_file="baseline_model_report.md"
+result_file="./reports/baseline_model_results.csv"
+report_file="./reports/baseline_model_report.md"
 
 #To check if the result file exist
 if [[ ! -f $result_file ]]; then 
