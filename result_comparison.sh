@@ -1,36 +1,36 @@
 #!/bin/bash
-result_file="./reports/baseline_model_results.csv"
-report_file="./reports/baseline_model_report.md"
-
-#To check if the result file exist
-if [[ ! -f $result_file ]]; then 
-	echo "Result file not found ar $result_file"
-	exit 1
-fi
+result_file="reports/baseline_model_results.csv"
+report_file=baseline_model_report.md
 
 #extract the best model by F1 score
 
-best)model=$(awk -F',' 'NR > 1 {if($3 > max) {max=$3; line=$0}} END {print line}' "result_file")
+best_model=$(sort -t, -k5 -rg "$result_file" | head -n 1)
 
-# generate the baseline model report
 #extract model details
 
-data_version=$(echo "$best_model" | awk -F',' '{print $1}')
-model_name=$(echo "$best_model" | awk -F',' '{print $2}')
-f1_score=$(echo "$best_model" | awk -F',' '{print $3}')
-accuracy=$(echo "$best_model" | awk -F',' '{print $4}')
-confusion_matrix_image="images/${data_version}_${model_name}_confusion_matrix.png"
+data_version=$(echo "$best_model" | awk -F, '{print $1}')
+model_name=$(echo "$best_model" | awk -F, '{print $2}')
+f1_score=$(echo "$best_model" | awk -F, '{print $3}')
+precision=$(echo "$best_model" | awk -F, '{print $4}')
+recall=$(echo "$best_model" | awk -F, '{print $5}')
+roc_auc=$(echo "$best_model" | awk -F, '{print $6}')
+
+directory="reports"
+confusion_matrix_image=$(echo "$best_model" | awk -F, '{print $1 "_" $2}' | sed 's/,/_/g')
 
 #write report
-cat << EOF > "$report_file"
+cat <<EOF > "$report_file"
 # Baseline Model Report
 
-**Data Version**: $data_version
-**Model Name**: $model_name
-**F1 Score**: $f1_score
-**Accuracy**: $accuracy
+* **Data Version**: $data_version
+* **Model Name**: $model_name
+
+* **F1 Score**: $f1_score
+* **Recall**: $recall
+* **ROC_AUC**: $roc_auc
 
 ### Confusion Matrix
-![Confusion Matrix]($confusion_matrix_image)
+![Confusion Matrix](reports/data${name}_confusion_matrix.png)
+
 EOF
 

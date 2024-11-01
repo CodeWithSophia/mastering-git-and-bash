@@ -2,7 +2,7 @@
 reports/*.csv
 
 #ignore all png files
-reports/*.png
+#reports/*.png
 
 #include the following items
 !reports/baseline_model_results.csv
