@@ -30,7 +30,7 @@ cat <<EOF > "$report_file"
 * **ROC_AUC**: $roc_auc
 
 ### Confusion Matrix
-![Confusion Matrix](reports/data${confusion_matrix_image}_confusion_matrix.png)
+![Model Image](reports/data${confusion_matrix_image}_confusion_matrix.png)
 
 EOF
 
