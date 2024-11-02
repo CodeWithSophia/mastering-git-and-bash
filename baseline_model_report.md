@@ -4,7 +4,7 @@
 * **Model Name**: RandomForestClassifier
 
 * **F1 Score**: 0.84
-* **Recall**: 0.84
+* **Recall**: 0.87
 * **ROC_AUC**: 0.59
 
 ### Confusion Matrix

@@ -6,4 +6,4 @@ reports/*.csv
 
 #include the following items
 !reports/baseline_model_results.csv
-!reports/baseline_model_report.md
+!baseline_model_report.md

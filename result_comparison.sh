@@ -10,9 +10,9 @@ best_model=$(sort -t, -k5 -rg "$result_file" | head -n 1)
 
 data_version=$(echo "$best_model" | awk -F, '{print $1}')
 model_name=$(echo "$best_model" | awk -F, '{print $2}')
-f1_score=$(echo "$best_model" | awk -F, '{print $3}')
-precision=$(echo "$best_model" | awk -F, '{print $4}')
-recall=$(echo "$best_model" | awk -F, '{print $5}')
+precision=$(echo "$best_model" | awk -F, '{print $3}')
+recall=$(echo "$best_model" | awk -F, '{print $4}')
+f1_score=$(echo "$best_model" | awk -F, '{print $5}')
 roc_auc=$(echo "$best_model" | awk -F, '{print $6}')
 
 directory="reports"
