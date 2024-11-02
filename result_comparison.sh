@@ -16,7 +16,8 @@ f1_score=$(echo "$best_model" | awk -F, '{print $5}')
 roc_auc=$(echo "$best_model" | awk -F, '{print $6}')
 
 directory="reports"
-confusion_matrix_image=$(echo "$best_model" | awk -F, '{print $1 "_" $2}' | sed 's/,/_/g')
+#confusion_matrix_image=$(echo "$best_model" | awk -F, '{print $1 "_" $2}' | sed 's/,/_/g')
+confusion_matrix_image="data${data_version}_${model_name}_confusion_matrix.png"
 
 #write report
 cat <<EOF > "$report_file"
@@ -30,7 +31,7 @@ cat <<EOF > "$report_file"
 * **ROC_AUC**: $roc_auc
 
 ### Confusion Matrix
-![Model Image](reports/datav$version_$model_confusion_matrix.png)
+![Confusion Matrix](reports/${confusion_matrix_image})
 
 EOF
 
