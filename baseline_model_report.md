@@ -8,5 +8,5 @@
 * **ROC_AUC**: 0.59
 
 ### Confusion Matrix
-![Confusion Matrix](reports/datav1.6_RandomForestClassifier_confusion_matrix.png)
+![Model Image](reports/datav1.6_RandomForestClassifier_confusion_matrix.png)
 

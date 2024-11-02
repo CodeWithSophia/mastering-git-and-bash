@@ -18,6 +18,7 @@ roc_auc=$(echo "$best_model" | awk -F, '{print $6}')
 directory="reports"
 #confusion_matrix_image=$(echo "$best_model" | awk -F, '{print $1 "_" $2}' | sed 's/,/_/g')
 confusion_matrix_image="data${data_version}_${model_name}_confusion_matrix.png"
+echo "Confusion Matrix Image Path: reports/${confusion_matrix_image}"
 
 #write report
 cat <<EOF > "$report_file"
